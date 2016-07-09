@@ -54,6 +54,23 @@ public class BlockMergerImpl implements BlockMerger {
 		return mergeTargetPoint;
 	}
 	
+	private boolean isDirectionFacedOutOfEdge(int rowIndex, int columnIndex, Direction direction) {
+		if (direction == Direction.UP && rowIndex == 0) {
+			return true;
+		}
+		else if (direction == Direction.DOWN && rowIndex == Table.SIZE - 1) {
+			return true;
+		}
+		else if (direction == Direction.LEFT && columnIndex == 0) {
+			return true;
+		}
+		else if (direction == Direction.RIGHT && columnIndex == Table.SIZE - 1) {
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	class MergeTraversalDetail {
 		int rowStartIndex;
 		int rowEndIndex;
