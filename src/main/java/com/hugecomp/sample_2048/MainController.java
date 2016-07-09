@@ -21,4 +21,9 @@ public class MainController {
 		}
 	}
 
+	private static void printGameOver(Table table) {
+		System.out.println("***** GAME OVER *****");
+		System.out.println("score : " + table.getScore());
+		System.out.println(table);
+	}
 }
