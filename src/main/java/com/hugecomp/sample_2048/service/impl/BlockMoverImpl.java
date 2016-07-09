@@ -128,4 +128,10 @@ public class BlockMoverImpl implements BlockMover {
 
 		return null;
 	}
+	
+	private void swapBlocksInARow(Board[] blocks, Integer columnIndex1, Integer columnIndex2) {
+		Board tempBlock = blocks[columnIndex1];
+		blocks[columnIndex1] = blocks[columnIndex2];
+		blocks[columnIndex2] = tempBlock;
+	}
 }
