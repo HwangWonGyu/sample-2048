@@ -76,4 +76,17 @@ public class BlockMoverImpl implements BlockMover {
 		blocks[rowIndex1][columnIndex] = blocks[rowIndex2][columnIndex];
 		blocks[rowIndex2][columnIndex] = tempBlock;
 	}
+	
+	private void moveBlocksHorizontally(Board[][] blocks, Direction direction) {
+		boolean isLeft = (direction == Direction.LEFT);
+
+		int start = isLeft ? 0 : Table.SIZE - 1;
+		int end = isLeft ? Table.SIZE : -1;
+		int interval = isLeft ? 1 : -1;
+
+		for (Board[] block : blocks) {
+			moveBlocksHorizontallyInARow(block, start, end, interval);
+		}
+	}
+	
 }
