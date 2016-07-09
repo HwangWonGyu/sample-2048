@@ -7,7 +7,6 @@ import com.hugecomp.sample_2048.service.BlockMover;
 
 public class BlockMoverImpl implements BlockMover {
 	
-	@Override
 	public void moveBlocks(Board[][] blocks, Direction direction) {
 		switch (direction) {
 			case UP:
