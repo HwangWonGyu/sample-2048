@@ -5,6 +5,7 @@ import com.hugecomp.sample_2048.service.BlockMerger;
 import com.hugecomp.sample_2048.service.impl.BlockMergerImpl;
 
 public class Table {
+	public static final String NULL_BLOCK_EXPRESSION = "*";
 	public static final int SIZE = 4;
 	private Board[][] blocks = new Board[SIZE][SIZE];
 	private int score = 0;
@@ -77,6 +78,34 @@ public class Table {
 		}
 
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuffer sb = new StringBuffer();
+		
+		for(int i=0; i<SIZE; i++) {
+			for (int j=0; j<SIZE; j++) {
+				sb.append(blocks[i][j] == null ? NULL_BLOCK_EXPRESSION : blocks[i][j].getValue());
+
+				if(blocks[i][j] != null) { // 자리수에 알맞은 간격
+					if(0 <= blocks[i][j].getValue() && blocks[i][j].getValue() < 10)
+						sb.append("    ");
+					else if(10 <= blocks[i][j].getValue() && blocks[i][j].getValue() < 100)
+						sb.append("   ");
+					else if(100 <= blocks[i][j].getValue() && blocks[i][j].getValue() < 1000)
+						sb.append("  ");
+					else
+						sb.append(" ");
+				}
+				else
+					sb.append("    ");
+			}
+			sb.append("\n");
+		}
+		
+		return sb.toString();
 	}
 	
 }
