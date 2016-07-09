@@ -26,4 +26,9 @@ public class MainController {
 		System.out.println("score : " + table.getScore());
 		System.out.println(table);
 	}
+	
+	private static void printTable(Table table) {
+		System.out.println();
+		System.out.println(table);
+	}
 }
