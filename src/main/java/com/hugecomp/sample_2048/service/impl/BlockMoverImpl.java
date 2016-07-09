@@ -34,4 +34,20 @@ public class BlockMoverImpl implements BlockMover {
 			moveBlocksVerticallyInAColumn(blocks, columnIndex, start, end, interval);
 		}
 	}
+	
+	private void moveBlocksVerticallyInAColumn(Board[][] blocks, int columnIndex, int start, int end, int interval) {
+		for (int rowIndex = start; rowIndex != end; rowIndex += interval) {
+			Integer emptyBlockRowIndex = findEmptyBlockIndexInAColumn(blocks, columnIndex, start, end, interval);
+			if (emptyBlockRowIndex == null) {
+				return;
+			}
+
+			Integer valuableBlockRowIndex = findValuableBlockIndexInAColumn(blocks, columnIndex, emptyBlockRowIndex + interval, end, interval);
+			if (valuableBlockRowIndex == null) {
+				return;
+			}
+
+			swapBlocksInAColumn(blocks, columnIndex, emptyBlockRowIndex, valuableBlockRowIndex);
+		}
+	}
 }
