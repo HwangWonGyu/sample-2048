@@ -31,6 +31,29 @@ public class BlockMergerImpl implements BlockMerger {
 		return sumOfScore;
 	}
 	
+	private Point getValidMergeTargetPoint(Board[][] blocks, int rowIndex, int columnIndex, Direction direction) {
+
+		if (blocks[rowIndex][columnIndex] == null) {
+			return null;
+		}
+
+		if (isDirectionFacedOutOfEdge(rowIndex, columnIndex, direction)) {
+			return null;
+		}
+
+		Point mergeTargetPoint = getMergeTargetPoint(columnIndex, rowIndex, direction);
+
+		if (blocks[mergeTargetPoint.getY()][mergeTargetPoint.getX()] == null) {
+			return null;
+		}
+
+		if (blocks[rowIndex][columnIndex].getValue() != blocks[mergeTargetPoint.getY()][mergeTargetPoint.getX()].getValue()) {
+			return null;
+		}
+
+		return mergeTargetPoint;
+	}
+	
 	class MergeTraversalDetail {
 		int rowStartIndex;
 		int rowEndIndex;
