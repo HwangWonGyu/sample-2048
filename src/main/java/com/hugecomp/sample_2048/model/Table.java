@@ -12,4 +12,16 @@ public class Table {
 	public Board[][] getBlocks() {
 		return this.blocks;
 	}
+	
+	private boolean isFull() {
+		for (Board[] blockArray : this.blocks) {
+			for (Board block : blockArray) {
+				if (block == null) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }
