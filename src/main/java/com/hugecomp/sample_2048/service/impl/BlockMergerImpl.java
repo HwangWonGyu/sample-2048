@@ -1,11 +1,36 @@
 package com.hugecomp.sample_2048.service.impl;
 
+import com.hugecomp.sample_2048.model.Board;
+import com.hugecomp.sample_2048.model.Point;
 import com.hugecomp.sample_2048.model.Table;
 import com.hugecomp.sample_2048.model.enums.Direction;
 import com.hugecomp.sample_2048.service.BlockMerger;
 
 public class BlockMergerImpl implements BlockMerger {
 
+	@Override
+	public int mergeBlocksIfAbleToMergeAndReturnScore(Board[][] blocks, Direction direction) {
+
+		int sumOfScore = 0;
+
+		MergeTraversalDetail mergeTraversalDetail = new MergeTraversalDetail(direction);
+
+		for (int rowIndex = mergeTraversalDetail.rowStartIndex; rowIndex != mergeTraversalDetail.rowEndIndex; rowIndex += mergeTraversalDetail.rowInterval) {
+			for (int columnIndex = mergeTraversalDetail.columnStartIndex; columnIndex != mergeTraversalDetail.columnEndIndex; columnIndex += mergeTraversalDetail.columnInterval) {
+
+				Point mergeTargetPoint = getValidMergeTargetPoint(blocks, rowIndex, columnIndex, direction);
+
+				if (mergeTargetPoint == null) {
+					continue;
+				}
+
+				sumOfScore += mergeSourceIntoTargetAndReturnScore(blocks, new Point(columnIndex, rowIndex), mergeTargetPoint);
+			}
+		}
+
+		return sumOfScore;
+	}
+	
 	class MergeTraversalDetail {
 		int rowStartIndex;
 		int rowEndIndex;
