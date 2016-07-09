@@ -1,3 +1,5 @@
+/* GAME '2048' in JAVA Console*/
+
 package com.hugecomp.sample_2048;
 
 import java.util.Scanner;
