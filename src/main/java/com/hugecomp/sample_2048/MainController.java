@@ -1,5 +1,5 @@
 /* GAME '2048' in JAVA Console*/
-
+/* Github Issue Test */
 package com.hugecomp.sample_2048;
 
 import java.util.Scanner;
