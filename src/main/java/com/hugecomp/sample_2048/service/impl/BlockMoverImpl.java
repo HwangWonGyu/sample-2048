@@ -70,4 +70,10 @@ public class BlockMoverImpl implements BlockMover {
 
 		return null;
 	}
+	
+	private void swapBlocksInAColumn(Board[][] blocks, int columnIndex, Integer rowIndex1, Integer rowIndex2) {
+		Board tempBlock = blocks[rowIndex1][columnIndex];
+		blocks[rowIndex1][columnIndex] = blocks[rowIndex2][columnIndex];
+		blocks[rowIndex2][columnIndex] = tempBlock;
+	}
 }
