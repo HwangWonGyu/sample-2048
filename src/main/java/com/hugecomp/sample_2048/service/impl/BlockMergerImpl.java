@@ -8,7 +8,6 @@ import com.hugecomp.sample_2048.service.BlockMerger;
 
 public class BlockMergerImpl implements BlockMerger {
 
-	@Override
 	public int mergeBlocksIfAbleToMergeAndReturnScore(Board[][] blocks, Direction direction) {
 
 		int sumOfScore = 0;
@@ -29,6 +28,15 @@ public class BlockMergerImpl implements BlockMerger {
 		}
 
 		return sumOfScore;
+	}
+	
+	public boolean isAbleToMerge(Board[][] blocks, int rowIndex, int columnIndex, Direction direction) {
+
+		if (getValidMergeTargetPoint(blocks, rowIndex, columnIndex, direction) == null) {
+			return false;
+		}
+
+		return true;
 	}
 	
 	private Point getValidMergeTargetPoint(Board[][] blocks, int rowIndex, int columnIndex, Direction direction) {
