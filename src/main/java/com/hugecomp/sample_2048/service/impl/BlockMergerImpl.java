@@ -71,6 +71,28 @@ public class BlockMergerImpl implements BlockMerger {
 			return false;
 	}
 	
+	private Point getMergeTargetPoint(int columnIndex, int rowIndex, Direction direction) {
+		int targetRowIndex = rowIndex;
+		int targetColumnIndex = columnIndex;
+
+		switch(direction) {
+			case UP :
+				targetRowIndex--;
+				break;
+			case DOWN :
+				targetRowIndex++;
+				break;
+			case RIGHT :
+				targetColumnIndex++;
+				break;
+			case LEFT :
+				targetColumnIndex--;
+				break;
+		}
+
+		return new Point(targetColumnIndex, targetRowIndex);
+	}
+	
 	class MergeTraversalDetail {
 		int rowStartIndex;
 		int rowEndIndex;
