@@ -1,6 +1,8 @@
 package com.hugecomp.sample_2048.model;
 
 import com.hugecomp.sample_2048.model.enums.Direction;
+import com.hugecomp.sample_2048.service.BlockMerger;
+import com.hugecomp.sample_2048.service.impl.BlockMergerImpl;
 
 public class Table {
 	public static final int SIZE = 4;
