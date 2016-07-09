@@ -60,4 +60,14 @@ public class BlockMoverImpl implements BlockMover {
 
 		return null;
 	}
+	
+	private Integer findValuableBlockIndexInAColumn(Board[][] blocks, int columnIndex, int start, int end, int interval) {
+		for (int rowIndex = start; rowIndex != end; rowIndex += interval) {
+			if (blocks[rowIndex][columnIndex] != null) {
+				return rowIndex;
+			}
+		}
+
+		return null;
+	}
 }
