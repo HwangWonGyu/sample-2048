@@ -107,4 +107,14 @@ public class BlockMoverImpl implements BlockMover {
 			swapBlocksInARow(blocks, emptyBlockColumnIndex, valuableBlockColumnIndex);
 		}
 	}
+	
+	private Integer findEmptyBlockIndexInARow(Board[] blocks, int start, int end, int interval) {
+		for (int columnIndex = start; columnIndex != end; columnIndex += interval) {
+			if (blocks[columnIndex] == null) {
+				return columnIndex;
+			}
+		}
+
+		return null;
+	}
 }
