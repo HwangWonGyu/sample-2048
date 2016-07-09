@@ -89,4 +89,22 @@ public class BlockMoverImpl implements BlockMover {
 		}
 	}
 	
+	private void moveBlocksHorizontallyInARow(Board[] blocks, int start, int end, int interval) {
+		for (int columnIndex = start; columnIndex != end; columnIndex += interval) {
+
+			Integer emptyBlockColumnIndex = findEmptyBlockIndexInARow(blocks, columnIndex, end, interval);
+
+			if (emptyBlockColumnIndex == null) {
+				return;
+			}
+
+			Integer valuableBlockColumnIndex = findValuableBlockIndexInARow(blocks, emptyBlockColumnIndex + interval, end, interval);
+
+			if (valuableBlockColumnIndex == null) {
+				return;
+			}
+
+			swapBlocksInARow(blocks, emptyBlockColumnIndex, valuableBlockColumnIndex);
+		}
+	}
 }
