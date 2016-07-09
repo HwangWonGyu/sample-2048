@@ -30,4 +30,8 @@ public class TableServiceImpl implements TableService {
 			table.createBlockToEmptySpace();
 		}
 	}
+	
+	public boolean isGameOver(Table table) {
+		return !table.isContinuable();
+	}
 }
