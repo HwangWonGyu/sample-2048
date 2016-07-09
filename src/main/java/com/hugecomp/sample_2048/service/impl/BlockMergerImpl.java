@@ -93,6 +93,14 @@ public class BlockMergerImpl implements BlockMerger {
 		return new Point(targetColumnIndex, targetRowIndex);
 	}
 	
+	private int mergeSourceIntoTargetAndReturnScore(Board[][] blocks, Point sourcePoint, Point targetPoint) {
+		int value = blocks[sourcePoint.getY()][sourcePoint.getX()].getValue();
+		value += blocks[targetPoint.getY()][targetPoint.getX()].getValue();
+		blocks[targetPoint.getY()][targetPoint.getX()].setValue(value);
+		blocks[sourcePoint.getY()][sourcePoint.getX()] = null;
+		return value;
+	}
+	
 	class MergeTraversalDetail {
 		int rowStartIndex;
 		int rowEndIndex;
