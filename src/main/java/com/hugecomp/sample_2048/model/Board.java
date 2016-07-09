@@ -19,4 +19,18 @@ public class Board {
 	public int getValue() {
 		return this.value;
 	}
+	
+	public static Board createRandomValueToRandomPosition(int... values) {
+		if (values == null) {
+			throw new IllegalArgumentException("values can't be null");
+		}
+
+		int factor = ((int)(Math.random() * 10)) % 2;
+		int value = (factor == 0 ? 2 : 4);
+		
+		Board block = new Board();
+		block.setValue(value);
+		
+		return block;
+	}
 }
