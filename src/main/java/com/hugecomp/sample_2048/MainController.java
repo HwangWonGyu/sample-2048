@@ -1,6 +1,7 @@
 package com.hugecomp.sample_2048;
 
 import com.hugecomp.sample_2048.model.Table;
+import com.hugecomp.sample_2048.model.enums.Direction;
 import com.hugecomp.sample_2048.service.TableService;
 import com.hugecomp.sample_2048.service.impl.TableServiceImpl;
 
@@ -30,5 +31,10 @@ public class MainController {
 	private static void printTable(Table table) {
 		System.out.println();
 		System.out.println(table);
+	}
+	
+	private static void moveTable(Table table) {
+		Direction direction = getInputedDirection();
+		tableService.move(table, direction);
 	}
 }
